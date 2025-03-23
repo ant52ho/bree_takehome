@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start:local": "sls offline start",
+    "deploy": "sls deploy",
+    "test": "jest",
+    "dev": "npm run build && npm run start:local",
+    "generate-token": "ts-node src/scripts/generateTestToken.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@serverless/typescript": "^3.38.0",
+    "@types/aws-lambda": "^8.10.147",
+    "@types/pg": "^8.11.11",
+    "aws-sdk": "^2.1692.0",
+    "dotenv": "^16.4.7",
+    "pg": "^8.14.0",
+    "serverless": "^4.9.0",
+    "serverless-offline": "^14.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/uuid": "^10.0.0",
+    "aws-lambda": "^1.0.7",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^11.1.0"
+  }
+}

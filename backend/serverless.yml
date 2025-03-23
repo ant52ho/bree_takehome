@@ -1,0 +1,149 @@
+service: my-lambda-project
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  environment:
+    JWT_SECRET: ${env:JWT_SECRET}
+
+plugins:
+  - serverless-offline
+
+functions:
+  authorizer:
+    handler: dist/authorizer/index.handler
+    environment:
+      JWT_SECRET: ${env:JWT_SECRET}
+
+  getUserSummary:
+    handler: dist/handlers/getUserSummary.handler
+    events:
+      - http:
+          path: users/summary
+          method: get
+          cors: true
+
+  createApplication:
+    handler: dist/handlers/createApplication/createApplication.handler
+    events:
+      - http:
+          path: create-application
+          method: post
+          cors: true
+          authorizer:
+            name: authorizer
+            type: token
+            identitySource: method.request.header.Authorization
+
+  createUser:
+    handler: dist/handlers/helpers/createUser.handler
+    events:
+      - http:
+          path: create-user
+          method: post
+          cors: true
+
+  disburseApplication:
+    handler: dist/handlers/applications/disburseApplication.handler
+    events:
+      - http:
+          path: disburse-application
+          method: post
+          cors: true
+          authorizer:
+            name: authorizer
+            type: token
+            identitySource: method.request.header.Authorization
+
+  createTransaction:
+    handler: dist/handlers/helpers/createTransaction.handler
+    events:
+      - http:
+          path: create-transaction
+          method: post
+          cors: true
+          authorizer:
+            name: authorizer
+            type: token
+            identitySource: method.request.header.Authorization
+
+  repayApplication:
+    handler: dist/handlers/applications/repayApplication.handler
+    events:
+      - http:
+          path: repay-application
+          method: post
+          cors: true
+          authorizer:
+            name: authorizer
+            type: token
+            identitySource: method.request.header.Authorization
+
+  cancelApplication:
+    handler: dist/handlers/applications/cancelApplication.handler
+    events:
+      - http:
+          path: cancel-application
+          method: post
+          cors: true
+          authorizer:
+            name: authorizer
+            type: token
+            identitySource: method.request.header.Authorization
+
+  rejectApplication:
+    handler: dist/handlers/applications/rejectApplication.handler
+    events:
+      - http:
+          path: reject-application
+          method: post
+          cors: true
+          authorizer:
+            name: authorizer
+            type: token
+            identitySource: method.request.header.Authorization
+
+  viewApplicationHistory:
+    handler: dist/handlers/viewApplicationHistory/viewApplicationHistory.handler
+    events:
+      - http:
+          path: view-application-history
+          method: get
+          cors: true
+          authorizer:
+            name: authorizer
+            type: token
+            identitySource: method.request.header.Authorization
+
+  generateToken:
+    handler: dist/handlers/helpers/generateToken.handler
+    events:
+      - http:
+          path: generate-token
+          method: post
+          cors: true
+
+  releaseFunds:
+    handler: dist/handlers/helpers/scheduleAndReleaseFunds.handler
+    events:
+      - http:
+          path: applications/release-funds
+          method: post
+          cors: true
+          authorizer:
+            name: authorizer
+            type: token
+            identitySource: method.request.header.Authorization
+
+  getApplications:
+    handler: dist/handlers/helpers/getApplications.handler
+    events:
+      - http:
+          path: applications
+          method: get
+          cors: true
+          authorizer:
+            name: authorizer
+            type: token
+            identitySource: method.request.header.Authorization
