@@ -29,15 +29,17 @@ This project consists of a full-stack application with a TypeScript/Node.js back
 
    ```bash
    npm install
-   # or
-   yarn install
    ```
 
-3. Create a `.env` file in the backend directory with the following variables similar to the sample env file:
+3. Create a `.env` file in the backend directory with the following variables similar to the sample env file in backend/.sample.env
 
 4. Set up the database:
 
-Running docker-compose up is sufficient
+In the backend folder, run:
+
+```bash
+   docker-compose up
+```
 
 5. Start the development server:
    ```bash
@@ -60,9 +62,7 @@ A list of endpoints will be available for you to test with. Due to authenticatio
    npm install
    ```
 
-3. Create a `.env` file in the frontend directory with the following variables:
-
-Can use .sample.env file
+3. Create a `.env` file in the frontend directory using the frontend/.sample.env file
 
 4. Start the development server:
    ```bash
