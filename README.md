@@ -64,3 +64,5 @@ A list of endpoints will be available for you to test with. Due to authenticatio
    ```
 
 The frontend will be available at the url outputted in the terminal
+
+NOTE: JWT token authentication is required on certain routes. If testing the backend without the frontend, you'll need to include extra request headers or modify the serverless.yml file to temporarily disable authentication.
