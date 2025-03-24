@@ -2,12 +2,6 @@
 
 This project consists of a full-stack application with a TypeScript/Node.js backend and a React/TypeScript frontend.
 
-## Prerequisites
-
-- Node.js (v18 or higher)
-- npm or yarn
-- PostgreSQL (v14 or higher)
-
 ## Project Structure
 
 ```
