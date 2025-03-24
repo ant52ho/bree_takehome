@@ -10,7 +10,8 @@ import {
 } from "../types/application";
 import { User, CreateUserRequest } from "../types/user";
 
-const API_BASE_URL = "http://localhost:3000/dev"; // Update with your API URL
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/dev";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
